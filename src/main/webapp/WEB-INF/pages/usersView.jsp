@@ -38,6 +38,7 @@
             </tbody>
         </table>
     </div>
+    <img src="/resources/pic.jpg" />
 </div>
 </body>
 </html>
