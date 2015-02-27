@@ -37,8 +37,7 @@ public class UserService {
         return users;
     }
 
-    public String save(User user) {
+    public void save(User user) {
         users.add(user);
-        return "good";
     }
 }
