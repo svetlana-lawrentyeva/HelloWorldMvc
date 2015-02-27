@@ -36,4 +36,9 @@ public class UserService {
     public List<User> findAll() {
         return users;
     }
+
+    public String save(User user) {
+        users.add(user);
+        return "good";
+    }
 }
