@@ -1,8 +1,12 @@
 package com.luxoft.controller;
 
+import com.luxoft.model.Teacher;
 import com.luxoft.model.User;
+import com.luxoft.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +26,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    TeacherService teacherService;
 
     @RequestMapping(value = "users", method = RequestMethod.GET)
     public ModelAndView getUsersView(){
@@ -31,16 +37,18 @@ public class UserController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
-    public String viewRegistration(Map<String, Object> model) {
+    public String viewRegistration(Model model) {
         User userForm = new User();
-        model.put("userForm", userForm);
+        List<Teacher>teachers = teacherService.findAll();
+        model.addAttribute("userForm", userForm);
+        model.addAttribute("teachers", teachers);
 
         return "registration";
     }
 
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processRegistration(@ModelAttribute("userForm") User user, Map<String, Object> model) {
+    public String processRegistration(@ModelAttribute("userForm") User user, BindingResult result) {
 
         // implement your own registration logic here...
         userService.save(user);
@@ -50,6 +58,7 @@ public class UserController {
         System.out.println("password: " + user.getFamilyName());
         System.out.println("email: " + user.getEmail());
         System.out.println("birth date: " + user.getId());
+        System.out.println("teacher: " + user.getTeacher().getFirstName()+" "+user.getTeacher().getFamilyName());
 
         return "registrationSuccess";
     }

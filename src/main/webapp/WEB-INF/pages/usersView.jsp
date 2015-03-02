@@ -26,13 +26,22 @@
                 <th>email</th>
             </tr>
             <thead>
-            <tbody>
+            <tbody> <tr>
+            <td>id</td>
+            <td>firstName</td>
+            <td>familyName</td>
+            <td>email</td>
+            <td>teacher.firstName</td>
+            <td>teacher.familyName</td>
+        <tr>
             <c:forEach var="u" items="${usersModel}">
             <tr>
                 <td>${u.id}</td>
                 <td>${u.firstName}</td>
                 <td>${u.familyName}</td>
                 <td>${u.email}</td>
+                <td>${u.teacher.firstName}</td>
+                <td>${u.teacher.familyName}</td>
             <tr>
                 </c:forEach>
             </tbody>

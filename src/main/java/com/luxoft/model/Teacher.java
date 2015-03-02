@@ -1,14 +1,13 @@
 package com.luxoft.model;
 
 /**
- * Created by SCJP on 26.02.2015.
+ * Created by Svetlana Lawrentyeva on 02.03.15.
  */
-public class User {
+public class Teacher {
     private Long id;
     private String firstName;
     private String familyName;
     private String email;
-    private Teacher teacher;
 
     public Long getId() {
         return id;
@@ -40,13 +39,5 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Teacher getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
     }
 }
